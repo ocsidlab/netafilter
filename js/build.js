@@ -1,314 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-// Read map legend options
-var legend = require('./map-legend');
-
 window.NetaFilter = {};
-
-// The interactive map legend model
-window.NetaFilter.filterModel = [
-  {
-    label: 'Education',
-    color: '#f2f2f2',
-    fieldName: 'myneta Education Points',
-    layer: 'education',
-    mapFilter: [
-      ["<=", "myneta Education Points", 25]
-    ],
-    filters: [
-      {
-        color: 'rgb(250, 0, 0)',
-        label: 'Illiterate',
-        layer: 'education-illiterate',
-        mapFilter: [
-          ["==", "myneta Education Points", 0]
-        ]
-      }, {
-        color: 'rgb(250, 100, 28)',
-        label: '8th pass',
-        layer: 'education-8th-pass',
-        mapFilter: [
-          [
-            ">", "myneta Education Points", 0
-          ],
-          [
-            "<=", "myneta Education Points", 8
-          ]
-        ]
-      }, {
-        color: 'rgb(255, 174, 0)',
-        label: '12th pass',
-        layer: 'education-12th-pass',
-        mapFilter: [
-          [
-            ">", "myneta Education Points", 8
-          ],
-          [
-            "<=", "myneta Education Points", 12
-          ]
-        ]
-      }, {
-        color: 'rgb(255, 255, 0)',
-        label: 'Graduate',
-        layer: 'education-graduate',
-        mapFilter: [
-          [
-            ">", "myneta Education Points", 12
-          ],
-          [
-            "<=", "myneta Education Points", 15
-          ]
-        ]
-      }, {
-        color: 'rgb(250, 255, 0)',
-        label: 'Graduate Professional',
-        layer: 'education-graduate-professional',
-        mapFilter: [
-          [
-            ">", "myneta Education Points", 15
-          ],
-          [
-            "<=", "myneta Education Points", 17
-          ]
-        ]
-      }, {
-        color: 'rgb(179, 255, 0)',
-        label: 'Post Graduate',
-        layer: 'education-post-graduate',
-        mapFilter: [
-          [
-            ">", "myneta Education Points", 17
-          ],
-          [
-            "<=", "myneta Education Points", 20
-          ]
-        ]
-      }, {
-        color: 'rgb(60, 232, 60)',
-        label: 'PhD',
-        layer: 'education-phd',
-        mapFilter: [
-          [
-            ">", "myneta Education Points", 20
-          ],
-          [
-            "<=", "myneta Education Points", 25
-          ]
-        ]
-      }
-    ]
-  }, {
-    label: 'Assets',
-    fieldName: 'myneta Total Assets',
-    layer: 'assets',
-    color: '#f2f2f2',
-    mapFilter: [
-      ["<=", "myneta Total Assets", 10000000000]
-    ],
-    filters: [
-      {
-        color: '#f1eef6',
-        label: '< 1 Crore',
-        layer: 'assets-lt-1cr',
-        mapFilter: [
-          ["<=", "myneta Total Assets", 10000000]
-        ]
-      }, {
-        color: '#d4b9da',
-        label: '> 1 Crore',
-        layer: 'assets-lt-3cr',
-        mapFilter: [
-          [
-            ">", "myneta Total Assets", 10000000
-          ],
-          [
-            "<=", "myneta Total Assets", 30000000
-          ]
-        ]
-      }, {
-        color: '#c994c7',
-        label: '> 3 Crore',
-        layer: 'assets-gt-10cr',
-        mapFilter: [
-          [
-            ">", "myneta Total Assets", 30000000
-          ],
-          [
-            "<=", "myneta Total Assets", 100000000
-          ]
-        ]
-      }, {
-        color: '#df65b0',
-        label: '> 10 Crore',
-        layer: 'assets-gt-20cr',
-        mapFilter: [
-          [
-            ">", "myneta Total Assets", 100000000
-          ],
-          [
-            "<=", "myneta Total Assets", 200000000
-          ]
-        ]
-      }, {
-        color: '#e7298a',
-        label: '> 20 Crore',
-        layer: 'assets-gt-50cr',
-        mapFilter: [
-          [
-            ">", "myneta Total Assets", 200000000
-          ],
-          [
-            "<=", "myneta Total Assets", 500000000
-          ]
-        ]
-      }, {
-        color: '#ce1256',
-        label: '> 50 Crore',
-        layer: 'assets-gt-100cr',
-        mapFilter: [
-          [
-            ">", "myneta Total Assets", 500000000
-          ],
-          [
-            "<=", "myneta Total Assets", 1000000000
-          ]
-        ]
-      }, {
-        color: '#91003f',
-        label: '> 100 Crore',
-        layer: 'assets-gt-200cr',
-        mapFilter: [
-          [">", "myneta Total Assets", 1000000000]
-        ]
-      }
-    ]
-  }, {
-    label: 'Criminal Cases',
-    fieldName: 'myneta Criminal Case',
-    layer: 'criminal-cases',
-    color: '#f2f2f2',
-    mapFilter: [
-      [">=", "myneta Criminal Case", 0]
-    ],
-    filters: [
-      {
-        color: '#ddffb3',
-        label: '0',
-        layer: 'criminal-cases-0',
-        mapFilter: [
-          ["==", "myneta Criminal Case", 0]
-        ]
-      }, {
-        color: '#fed976',
-        label: '< 1',
-        layer: 'criminal-cases-lt-2',
-        mapFilter: [
-          [
-            ">", "myneta Criminal Case", 0
-          ],
-          [
-            "<=", "myneta Criminal Case", 1
-          ]
-        ]
-      }, {
-        color: '#feb24c',
-        label: '< 3',
-        layer: 'criminal-cases-lt-3',
-        mapFilter: [
-          [
-            ">", "myneta Criminal Case", 1
-          ],
-          [
-            "<=", "myneta Criminal Case", 3
-          ]
-        ]
-      }, {
-        color: '#fd8d3c',
-        label: '< 6',
-        layer: 'criminal-cases-lt-6',
-        mapFilter: [
-          [
-            ">", "myneta Criminal Case", 3
-          ],
-          [
-            "<=", "myneta Criminal Case", 6
-          ]
-        ]
-      }, {
-        color: '#fc4e2a',
-        label: '< 12',
-        layer: 'criminal-cases-lt-12',
-        mapFilter: [
-          [
-            ">", "myneta Criminal Case", 6
-          ],
-          [
-            "<=", "myneta Criminal Case", 12
-          ]
-        ]
-      }, {
-        color: '#e31a1c',
-        label: '< 18',
-        layer: 'criminal-cases-lt-18',
-        mapFilter: [
-          [
-            ">", "myneta Criminal Case", 12
-          ],
-          [
-            "<=", "myneta Criminal Case", 18
-          ]
-        ]
-      }, {
-        color: '#b10026',
-        label: '> 18',
-        layer: 'criminal-cases-gt-18',
-        mapFilter: [
-          [">", "myneta Criminal Case", 18]
-        ]
-      }
-    ]
-  }
-];
-
-// Create the legend view
-window.NetaFilter.filterView = {
-  init: function(selectedLayer) {
-    filters = window.NetaFilter.filterModel;
-    var self = this;
-    this.ractive = new Ractive({
-      el: '#netafilters',
-      template: '#netafilters-template',
-      data: {
-        filters: filters,
-        selectedLayer: selectedLayer
-      }
-    });
-
-    // Update map filters on legend interaction
-    this.ractive.on('changeFilter', function(e, layer, mapFilter) {
-      self.ractive.get('filters').forEach(function(parentFilter) {
-        if (parentFilter.layer === self.ractive.get('selectedLayer') || parentFilter.layer === layer) {
-          window.NetaFilter.mapView.toggleVisibility(parentFilter.layer);
-          parentFilter.filters.forEach(function(filter) {
-            window.NetaFilter.mapView.toggleVisibility(filter.layer);
-          });
-        }
-      });
-      self.ractive.set('selectedLayer', layer);
-    });
-    this.ractive.on('changeSubfilter', function(e, parentLayer, layer, mapFilter) {
-      if (parentLayer === self.ractive.get('selectedLayer')) {
-        window.NetaFilter.mapView.toggleVisibility(layer);
-      }
-    });
-  }
-};
 
 // Create the map
 window.NetaFilter.mapView = {
-  init: function(selectedLayer, map) {
+  init: function(map) {
     var self = this;
-
-    filters = window.NetaFilter.filterModel;
     self.map = map;
 
     this.ractive = new Ractive({
@@ -316,38 +12,7 @@ window.NetaFilter.mapView = {
         selectedConstituency: ''
       },
       oninit: function() {
-
-        //  Creates map layers using a filter tree
-        // var treeToLayer = function(tree) {
-        //     var parentLayer;
-        //     var isSelected;
-        //     tree.forEach(function(node) {
-        //         parentLayer = node.layer;
-        //         self.map.on('style.load', function() {
-        //             self.createLayer({
-        //                 name: node.layer,
-        //                 mapFilter: node.mapFilter,
-        //                 color: node.color,
-        //                 selected: node.layer === selectedLayer
-        //             });
-        //             if (typeof node.filters === 'object') {
-        //                 node.filters.forEach(function(subnode) {
-        //                     self.createLayer({
-        //                         name: subnode.layer,
-        //                         mapFilter: subnode.mapFilter,
-        //                         color: subnode.color,
-        //                         selected: node.layer === selectedLayer
-        //                     });
-        //                 })
-        //             }
-        //         });
-        //     });
-        // }
-        //
-        // treeToLayer(filters);
-
         self.map.on('style.load', function() {
-
           // The map tooltip
           var tooltip = new Ractive({
             el: '#map-tooltip',
@@ -388,8 +53,8 @@ window.NetaFilter.mapView = {
           }, 'admin-3-4-boundaries-bg');
 
           var hoverFeature = {};
-          var clickedFeature = undefined;
 
+          var clickedFeature = undefined;
           self.map.on('mousemove', function(e) {
 
             // Get feature at mouse pointer
@@ -437,40 +102,13 @@ window.NetaFilter.mapView = {
               clickedFeature = hoverFeature;
             }
           });
-
         });
       }
     });
-  },
-  // Create map layers based on legend filter model
-  createLayer: function(config) {
-    this.map.addLayer({
-      "id": config.name,
-      "type": "fill",
-      "source": "mapbox://planemad.6wpgu5qz",
-      "source-layer": "myneta-loksabha",
-      "filter": [].concat('all', config.mapFilter),
-      "layout": {
-        "visibility": config.selected
-          ? "visible"
-          : "none"
-      },
-      "paint": {
-        "fill-color": config.color,
-        "fill-opacity": 1.0
-      }
-    }, 'myneta-loksabha selected');
-  },
-  toggleVisibility: function(layer) {
-    var status = this.map.getLayoutProperty(layer, 'visibility');
-    this.map.setLayoutProperty(
-      layer, 'visibility', status === 'visible'
-      ? 'none'
-      : 'visible');
   }
 };
 
-},{"./map-legend":4}],2:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 // Configure your Mapbox map project
 
 var project = {
@@ -498,13 +136,10 @@ var map = require('./map');
 // Run the app
 var app = require('./app');
 
-// Set the initial map theme to education data
-window.NetaFilter.filterView.init('education', map);
-window.NetaFilter.mapView.init('education', map);
+window.NetaFilter.mapView.init(map);
 
 // Map ready
 map.on('style.load', function(e) {
-
   map.addLayer({
     "id": "myneta-loksabha-points education",
     "type": "circle",
@@ -618,38 +253,14 @@ map.on('style.load', function(e) {
   // Layer switcher
   $(".selectionGroupButton").each(function() {
     $(this).click(function() {
-      console.log(this);
       $(".selectionGroupButton").removeClass('active');
       $(this).addClass('active');
       mapboxglUtils.mapToggleLayerIdFromGroup(map, $(this).data("layer"), ["myneta-loksabha-points education", "myneta-loksabha-points criminal", "myneta-loksabha-points assets"]);
     })
   })
-
 });
 
-},{"./app":1,"./map":5,"./mapbox-gl-utils":6}],4:[function(require,module,exports){
-var legend = [{
-  label: "Education",
-  mapLayer: "myneta-education",
-  mapPaintProperties: [{
-    "fill-color" : {
-      "type": "interval",
-      "property": "myneta Education Points",
-      "stops": [
-        [0, "rgb(250, 0, 0)", "Illiterate"],
-        [8, "rgb(250, 100, 28)", "8th Pass"],
-        [12, "rgb(255, 174, 0)", "12th Pass"],
-        [17, "rgb(255, 255, 0)", "Graduate"],
-        [20, "rgb(179, 255, 0)", "Post Graduate"],
-        [26, "rgb(60, 232, 60)", "Doctorate"]
-      ]
-    }
-  }]
-}]
-
-module.exports = legend;
-
-},{}],5:[function(require,module,exports){
+},{"./app":1,"./map":4,"./mapbox-gl-utils":5}],4:[function(require,module,exports){
 // Project map configuration
 var Config = require('./config');
 mapboxgl.accessToken = Config.accessToken;
@@ -679,7 +290,7 @@ map.addControl(new mapboxgl.GeolocateControl({
 // Export module
 module.exports = map;
 
-},{"./config":2,"merge":7}],6:[function(require,module,exports){
+},{"./config":2,"merge":6}],5:[function(require,module,exports){
 // Utility functions to work with Mapbox GL JS maps
 // Requires mapbox-gl.js and jquery
 
@@ -898,7 +509,7 @@ module.exports.createHTML = createHTML;
 module.exports.mapToggleLayerId = toggle;
 module.exports.mapToggleLayerIdFromGroup = showOnlyLayers;
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /*!
  * @name JavaScript/NodeJS Merge v1.2.0
  * @author yeikos

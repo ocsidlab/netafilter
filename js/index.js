@@ -7,13 +7,10 @@ var map = require('./map');
 // Run the app
 var app = require('./app');
 
-// Set the initial map theme to education data
-window.NetaFilter.filterView.init('education', map);
-window.NetaFilter.mapView.init('education', map);
+window.NetaFilter.mapView.init(map);
 
 // Map ready
 map.on('style.load', function(e) {
-
   map.addLayer({
     "id": "myneta-loksabha-points education",
     "type": "circle",
@@ -127,11 +124,9 @@ map.on('style.load', function(e) {
   // Layer switcher
   $(".selectionGroupButton").each(function() {
     $(this).click(function() {
-      console.log(this);
       $(".selectionGroupButton").removeClass('active');
       $(this).addClass('active');
       mapboxglUtils.mapToggleLayerIdFromGroup(map, $(this).data("layer"), ["myneta-loksabha-points education", "myneta-loksabha-points criminal", "myneta-loksabha-points assets"]);
     })
   })
-
 });
