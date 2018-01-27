@@ -1,5 +1,33 @@
 window.NetaFilter = {};
 
+var electoralLevelDict = {
+  "mp": {
+    "label": "Parliamentary Constituencies",
+    "layers": {
+      "labels": [],
+      "points": ["myneta-loksabha-points education", "myneta-loksabha-points criminal", "myneta-loksabha-points assets"],
+      "border": ["myneta-loksabha line"],
+      "base": ["myneta-baselayer"],
+    },
+    "source": "mapbox://planemad.6wpgu5qz",
+    "source-layer": "myneta-loksabha",
+    "fieldDict": {
+      "id": "PC_CODE",
+      "label": "PC_NAME2",
+      "is_in": "ST_NAME",
+      "name": "myneta Candidate",
+      "party": "myneta Party",
+      "education": "myneta E_1",
+      "assets": "myneta Total Assets",
+      "liabilities": "myneta Liabilities",
+      "cases": "myneta Criminal Case",
+      "category": "Res"
+    }
+  },
+  "mla": {},
+  "local": {}
+}
+
 // Create the map
 window.NetaFilter.mapView = {
   init: function(map) {
