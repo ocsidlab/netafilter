@@ -22,23 +22,15 @@ map.on('style.load', function(e) {
     "paint": {
       "circle-color": 'hsl(116, 85%, 39%)',
       "circle-opacity": 0.6,
-      "circle-radius": {
-        "property": "myneta E_1",
-        "stops": [
-          [
-            0, 0
-          ],
-          [
-            8, 2
-          ],
-          [
-            18, 4
-          ],
-          [
-            30, 30
-          ]
-        ]
-      }
+      "circle-radius": [
+        "interpolate",
+        ["linear"],
+        ["to-number", ["get", "myneta E_1"]],
+        0, 0,
+        8, 2,
+        18, 4,
+        30, 30
+      ]
     }
   }, 'myneta-loksabha selected');
 
@@ -87,23 +79,15 @@ map.on('style.load', function(e) {
     "paint": {
       "circle-color": '#f37321',
       "circle-opacity": 0.7,
-      "circle-radius": {
-        "property": "myneta Cri",
-        "stops": [
-          [
-            0, 0
-          ],
-          [
-            1, 2
-          ],
-          [
-            4, 8
-          ],
-          [
-            30, 30
-          ]
-        ]
-      }
+      "circle-radius": [
+        "interpolate",
+        ["linear"],
+        ["to-number", ["get", "myneta Cri"]],
+        0, 0,
+        1, 2,
+        4, 8,
+        30, 30
+      ]
     }
   }, 'myneta-loksabha selected');
 
