@@ -7,7 +7,7 @@ var electoralLevelDict = {
       "labels": [],
       "points": ["myneta-loksabha-points education", "myneta-loksabha-points criminal", "myneta-loksabha-points assets"],
       "border": ["myneta-loksabha line"],
-      "base": ["myneta-baselayer"],
+      "base": ["myneta-baselayer"]
     },
     "source": "mapbox://planemad.6wpgu5qz",
     "source-layer": "myneta-loksabha",
@@ -24,7 +24,24 @@ var electoralLevelDict = {
       "category": "Res"
     }
   },
-  "mla": {},
+  "mla": {
+    "label": "Assembly Constituencies",
+    "layers": {
+      "labels": ["ac label"],
+      "points": ["ac circle"],
+      "border": ["ac line border"],
+      "base": ["ac fill base"]
+    },
+    "source": "mapbox://planemad.india-constituencies",
+    "source-layer": "const_label",
+    "fieldDict": {
+      "id": "ac_code",
+      "label": "PC_NAME2",
+      "is_in_id": "ST_CODE" ,
+      "name": "myneta Candidate",
+      "party": "myneta Party",
+    }
+  },
   "local": {}
 }
 
