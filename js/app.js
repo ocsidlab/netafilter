@@ -36,10 +36,10 @@ var electoralLevelDict = {
     "source-layer": "const_label",
     "fieldDict": {
       "id": "ac_code",
-      "label": "PC_NAME2",
+      "label": "AC_NAME",
       "is_in_id": "ST_CODE" ,
-      "name": "myneta Candidate",
-      "party": "myneta Party",
+      "name": "tcpd_Candidate",
+      "party": "tcpd_Party",
     }
   },
   "local": {}
